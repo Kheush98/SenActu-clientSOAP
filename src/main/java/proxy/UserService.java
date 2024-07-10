@@ -27,6 +27,24 @@ public interface UserService {
 
     /**
      * 
+     * @param token
+     * @param username
+     * @return
+     *     returns proxy.User
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "userByUsername", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.UserByUsername")
+    @ResponseWrapper(localName = "userByUsernameResponse", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.UserByUsernameResponse")
+    @Action(input = "http://services.webservicesoap.sn.esp/UserService/userByUsernameRequest", output = "http://services.webservicesoap.sn.esp/UserService/userByUsernameResponse")
+    public User userByUsername(
+        @WebParam(name = "username", targetNamespace = "")
+        String username,
+        @WebParam(name = "token", targetNamespace = "")
+        String token);
+
+    /**
+     * 
      * @param adminPassword
      * @param adminUsername
      * @return
@@ -46,24 +64,6 @@ public interface UserService {
     /**
      * 
      * @param token
-     * @param username
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "deleteUser", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.DeleteUser")
-    @ResponseWrapper(localName = "deleteUserResponse", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.DeleteUserResponse")
-    @Action(input = "http://services.webservicesoap.sn.esp/UserService/deleteUserRequest", output = "http://services.webservicesoap.sn.esp/UserService/deleteUserResponse")
-    public String deleteUser(
-        @WebParam(name = "username", targetNamespace = "")
-        String username,
-        @WebParam(name = "token", targetNamespace = "")
-        String token);
-
-    /**
-     * 
-     * @param token
      * @return
      *     returns java.util.List<proxy.User>
      */
@@ -73,30 +73,6 @@ public interface UserService {
     @ResponseWrapper(localName = "getUsersResponse", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.GetUsersResponse")
     @Action(input = "http://services.webservicesoap.sn.esp/UserService/getUsersRequest", output = "http://services.webservicesoap.sn.esp/UserService/getUsersResponse")
     public List<User> getUsers(
-        @WebParam(name = "token", targetNamespace = "")
-        String token);
-
-    /**
-     * 
-     * @param password
-     * @param role
-     * @param token
-     * @param username
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "addUser", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.AddUser")
-    @ResponseWrapper(localName = "addUserResponse", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.AddUserResponse")
-    @Action(input = "http://services.webservicesoap.sn.esp/UserService/addUserRequest", output = "http://services.webservicesoap.sn.esp/UserService/addUserResponse")
-    public String addUser(
-        @WebParam(name = "username", targetNamespace = "")
-        String username,
-        @WebParam(name = "password", targetNamespace = "")
-        String password,
-        @WebParam(name = "role", targetNamespace = "")
-        String role,
         @WebParam(name = "token", targetNamespace = "")
         String token);
 
@@ -129,6 +105,30 @@ public interface UserService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "addUser", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.AddUser")
+    @ResponseWrapper(localName = "addUserResponse", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.AddUserResponse")
+    @Action(input = "http://services.webservicesoap.sn.esp/UserService/addUserRequest", output = "http://services.webservicesoap.sn.esp/UserService/addUserResponse")
+    public String addUser(
+        @WebParam(name = "username", targetNamespace = "")
+        String username,
+        @WebParam(name = "password", targetNamespace = "")
+        String password,
+        @WebParam(name = "role", targetNamespace = "")
+        String role,
+        @WebParam(name = "token", targetNamespace = "")
+        String token);
+
+    /**
+     * 
+     * @param password
+     * @param role
+     * @param token
+     * @param username
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "updateUser", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.UpdateUser")
     @ResponseWrapper(localName = "updateUserResponse", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.UpdateUserResponse")
     @Action(input = "http://services.webservicesoap.sn.esp/UserService/updateUserRequest", output = "http://services.webservicesoap.sn.esp/UserService/updateUserResponse")
@@ -139,6 +139,24 @@ public interface UserService {
         String password,
         @WebParam(name = "role", targetNamespace = "")
         String role,
+        @WebParam(name = "token", targetNamespace = "")
+        String token);
+
+    /**
+     * 
+     * @param token
+     * @param username
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "deleteUser", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.DeleteUser")
+    @ResponseWrapper(localName = "deleteUserResponse", targetNamespace = "http://services.webservicesoap.sn.esp/", className = "proxy.DeleteUserResponse")
+    @Action(input = "http://services.webservicesoap.sn.esp/UserService/deleteUserRequest", output = "http://services.webservicesoap.sn.esp/UserService/deleteUserResponse")
+    public String deleteUser(
+        @WebParam(name = "username", targetNamespace = "")
+        String username,
         @WebParam(name = "token", targetNamespace = "")
         String token);
 

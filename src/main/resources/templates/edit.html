@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header class="w-full mt-1 text-gray-700 bg-white border-b border-gray-100 shadow-sm body-font">
+      <div class="container flex flex-col items-start justify-between py-6 mx-auto md:flex-row px-16">
+        <a class="flex items-center mb-4 font-medium text-gray-900 title-font md:mb-0" th:href="@{/users}">
+          <h1 class="text-lg font-bold">Dashboard</h1>
+        </a>
+
+        <div class="items-center h-full">
+          <a href="#_" class="px-4 py-2 text-xs font-bold text-white uppercase transition-all duration-150 bg-teal-500 rounded shadow outline-none active:bg-teal-600 hover:shadow-md focus:outline-none ease">
+            Deconnexion
+          </a>
+        </div>
+      </div>
+    </header>
+    <h1 class="text-center my-8 text-3xl font-semibold text-gray-900">Modifier utilisateur</h1>
+
+    <div class="container mx-auto py-8">
+      <form class="w-full max-w-sm mx-auto bg-white p-8 rounded-md shadow-md" th:object="${user}">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Username</label>
+          <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                 type="text" id="username" th:field="*{username}" th:text="${user.username}" disabled>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+          <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                 type="password" id="password" name="password" placeholder="********" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">Confirm Password</label>
+          <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                 type="password" id="confirm-password" name="confirm-password" placeholder="********" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="role">Confirm Password</label>
+          <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                  id="role" th:field="*{role}">
+            <option value="editor">Editeur</option>
+            <option value="admin">Administrateur</option>
+          </select>
+        </div>
+        <button
+                class="w-full bg-indigo-500 text-white text-sm font-bold py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300"
+                type="submit">Modifier</button>
+      </form>
+    </div>
+</body>
+</html>

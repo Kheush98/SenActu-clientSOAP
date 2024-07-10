@@ -36,6 +36,8 @@ public class ObjectFactory {
     private static final QName _LoginResponse_QNAME = new QName("http://services.webservicesoap.sn.esp/", "loginResponse");
     private static final QName _UpdateUser_QNAME = new QName("http://services.webservicesoap.sn.esp/", "updateUser");
     private static final QName _UpdateUserResponse_QNAME = new QName("http://services.webservicesoap.sn.esp/", "updateUserResponse");
+    private static final QName _UserByUsername_QNAME = new QName("http://services.webservicesoap.sn.esp/", "userByUsername");
+    private static final QName _UserByUsernameResponse_QNAME = new QName("http://services.webservicesoap.sn.esp/", "userByUsernameResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: proxy
@@ -162,6 +164,26 @@ public class ObjectFactory {
      */
     public UpdateUserResponse createUpdateUserResponse() {
         return new UpdateUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link UserByUsername }
+     * 
+     * @return
+     *     the new instance of {@link UserByUsername }
+     */
+    public UserByUsername createUserByUsername() {
+        return new UserByUsername();
+    }
+
+    /**
+     * Create an instance of {@link UserByUsernameResponse }
+     * 
+     * @return
+     *     the new instance of {@link UserByUsernameResponse }
+     */
+    public UserByUsernameResponse createUserByUsernameResponse() {
+        return new UserByUsernameResponse();
     }
 
     /**
@@ -328,6 +350,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://services.webservicesoap.sn.esp/", name = "updateUserResponse")
     public JAXBElement<UpdateUserResponse> createUpdateUserResponse(UpdateUserResponse value) {
         return new JAXBElement<>(_UpdateUserResponse_QNAME, UpdateUserResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UserByUsername }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link UserByUsername }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://services.webservicesoap.sn.esp/", name = "userByUsername")
+    public JAXBElement<UserByUsername> createUserByUsername(UserByUsername value) {
+        return new JAXBElement<>(_UserByUsername_QNAME, UserByUsername.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UserByUsernameResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link UserByUsernameResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://services.webservicesoap.sn.esp/", name = "userByUsernameResponse")
+    public JAXBElement<UserByUsernameResponse> createUserByUsernameResponse(UserByUsernameResponse value) {
+        return new JAXBElement<>(_UserByUsernameResponse_QNAME, UserByUsernameResponse.class, null, value);
     }
 
 }
