@@ -12,7 +12,7 @@
             </a>
 
             <div class="items-center h-full">
-                <a href="#_" class="px-4 py-2 text-xs font-bold text-white uppercase transition-all duration-150 bg-teal-500 rounded shadow outline-none active:bg-teal-600 hover:shadow-md focus:outline-none ease">
+                <a th:href="@{/logout}" class="px-4 py-2 text-xs font-bold text-white uppercase transition-all duration-150 bg-teal-500 rounded shadow outline-none active:bg-teal-600 hover:shadow-md focus:outline-none ease">
                     Deconnexion
                 </a>
             </div>
@@ -21,7 +21,8 @@
     <h1 class="text-center my-8 text-3xl font-semibold text-gray-900">Liste des utilisateurs</h1>
     <div class="max-w-2xl mx-auto">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <div class="p-4">
+            <span th:text="${message}"></span>
+            <div class="p-4 flex justify-between">
                 <!-- <label for="table-search" class="sr-only">Search</label> -->
                 <div class="relative mt-1">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -34,6 +35,12 @@
                     </div>
                     <input type="text" id="table-search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5" placeholder="Search for items">
                 </div>
+                <a th:href="@{/addUser}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-8">
+                        <path d="M8.5 4.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 13c.552 0 1.01-.452.9-.994a5.002 5.002 0 0 0-9.802 0c-.109.542.35.994.902.994h8ZM12.5 3.5a.75.75 0 0 1 .75.75v1h1a.75.75 0 0 1 0 1.5h-1v1a.75.75 0 0 1-1.5 0v-1h-1a.75.75 0 0 1 0-1.5h1v-1a.75.75 0 0 1 .75-.75Z" />
+                    </svg>
+                </a>
+
             </div>
             <table class="w-full text-sm text-left text-gray-500 ">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
@@ -60,7 +67,13 @@
                     <td th:text="${user.role}" class="px-6 py-4"></td>
                     <td class="px-6 py-4 text-right flex justify-around">
                         <a th:href="@{/users/{username}(username=${user.username})}" class="font-medium text-blue-600 e-500 hover:underline">Edit</a>
-                        <a href="#" class="font-medium text-rose-600 e-500 hover:underline">Supprimer</a>
+                        <form th:action="@{/delete}" method="post" class="inline-block">
+                            <input type="hidden" th:name="username" th:value="${user.username}">
+                            <button type="submit" onclick="confirm('Voulez-vous supprimé cet utilisateur ?')"
+                                    class="font-medium text-rose-600 hover:underline cursor-pointer focus:outline-none">
+                                Supprimer
+                            </button>
+                        </form>
                     </td>
                 </tr>
 

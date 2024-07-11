@@ -1,5 +1,6 @@
 package esp.sn.clientsoap.model;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -7,10 +8,15 @@ import lombok.Data;
 public class User {
 
     private long id;
-    @NotNull
+
+    @NotEmpty(message = "Username is required")
     private String username;
-    @NotNull
+
+    @NotEmpty(message = "Password is required")
     private String password;
-    @NotNull
+
+    @NotEmpty(message = "Confirm Password is required")
+    private String confirmPassword;
+
     private String role;
 }
